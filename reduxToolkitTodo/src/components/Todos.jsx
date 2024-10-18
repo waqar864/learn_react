@@ -1,6 +1,6 @@
 
 import { useSelector, useDispatch } from 'react-redux'
-import { removeTodo } from '../features/todo/todoSlice'
+import { removeTodo, updateTodo } from '../features/todo/todoSlice'
 
 function Todos() {
   
@@ -17,6 +17,7 @@ function Todos() {
             key={todo.id}
           >
             <div className='text-white'>{todo.text}</div>
+            <div className='flex gap-2'>
             <button
              onClick={() => dispatch(removeTodo(todo.id))}
               className="text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-md"
@@ -36,6 +37,15 @@ function Todos() {
                 />
               </svg>
             </button>
+            <button
+            onClick={() => dispatch(updateTodo(todo.id))}
+            className='text-white bg-green-500 border-0 py-1 px-4 focus:outline-none hover:bg-green-600 rounded text-md'
+            >
+              
+            update
+            </button>
+            </div>
+          
           </li>
         ))}
       </ul>
